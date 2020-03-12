@@ -25,10 +25,10 @@ for FILENAME in ${PACKAGES}; do
     # base package slug is on the format "v3.x/php-x.x"
     BASE_PACKAGE_SLUG=v${ALPINE_VERSION}/php-${PHP_VERSION}
     # endpoint name.
-    ENDPOINT=https://api.bintray.com/content/php-alpine/${BASE_PACKAGE_SLUG}/${INTERNAL_VERSION}/php-${PHP_VERSION}
+    ENDPOINT=https://api.bintray.com/content/lucacri/${BASE_PACKAGE_SLUG}/${INTERNAL_VERSION}/php-${PHP_VERSION}
 
     # delete first.
-    curl -X DELETE -u ${BINTRAY_USERNAME}:${BINTRAY_API_KEY} https://api.bintray.com/content/php-alpine/${BASE_PACKAGE_SLUG}/x86_64/${FILENAME}
+    curl -X DELETE -u ${BINTRAY_USERNAME}:${BINTRAY_API_KEY} https://api.bintray.com/content/lucacri/${BASE_PACKAGE_SLUG}/x86_64/${FILENAME}
 
     # upload after delete.
     curl -X PUT -u ${BINTRAY_USERNAME}:${BINTRAY_API_KEY} \
@@ -37,6 +37,6 @@ for FILENAME in ${PACKAGES}; do
         -H "X-Bintray-Publish: 1" \
         -H "X-Bintray-Override: 1" \
         -T ./repo/${BASE_PACKAGE_SLUG}/x86_64/${FILENAME}  \
-        https://api.bintray.com/content/php-alpine/${BASE_PACKAGE_SLUG}/x86_64/${FILENAME}
+        https://api.bintray.com/content/lucacri/${BASE_PACKAGE_SLUG}/x86_64/${FILENAME}
         # "${ENDPOINT}/x86_64/${FILENAME}"
 done
